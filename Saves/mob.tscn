@@ -1,0 +1,91 @@
+[gd_scene load_steps=16 format=3 uid="uid://3hdld7jnl1r2"]
+
+[ext_resource type="Script" path="res://Mob.gd" id="1_mf1vi"]
+[ext_resource type="Texture2D" uid="uid://didr70b2w61dm" path="res://art/Enemy/chort_run_anim_f0.png" id="2_fd7ul"]
+[ext_resource type="Texture2D" uid="uid://tl68fnnrtvrs" path="res://art/Enemy/chort_run_anim_f1.png" id="3_y5h4t"]
+[ext_resource type="Texture2D" uid="uid://b8dvs4c5mpvbq" path="res://art/Enemy/chort_run_anim_f2.png" id="4_gcr2g"]
+[ext_resource type="Texture2D" uid="uid://mt8l0e7elobt" path="res://art/Enemy/chort_run_anim_f3.png" id="5_oi60g"]
+[ext_resource type="Texture2D" uid="uid://d1tgbaxjqrpmx" path="res://art/Enemy/pumpkin_dude_run_anim_f0.png" id="6_0ukn0"]
+[ext_resource type="Texture2D" uid="uid://bs5cwvk8itsn3" path="res://art/Enemy/pumpkin_dude_run_anim_f1.png" id="7_u4pv3"]
+[ext_resource type="Texture2D" uid="uid://cf1invcg1pik0" path="res://art/Enemy/pumpkin_dude_run_anim_f2.png" id="8_4m2o5"]
+[ext_resource type="Texture2D" uid="uid://c5bktydnfiw1e" path="res://art/Enemy/pumpkin_dude_run_anim_f3.png" id="9_oa65l"]
+[ext_resource type="Texture2D" uid="uid://ck3jssl6kxajl" path="res://art/Enemy/slug_anim_f0.png" id="10_nh4av"]
+[ext_resource type="Texture2D" uid="uid://pkokatqln3c8" path="res://art/Enemy/slug_anim_f1.png" id="11_gsac6"]
+[ext_resource type="Texture2D" uid="uid://bys70sy44dd7l" path="res://art/Enemy/slug_anim_f2.png" id="12_n8dan"]
+[ext_resource type="Texture2D" uid="uid://3jf2yfihgm7a" path="res://art/Enemy/slug_anim_f3.png" id="13_nt2jy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gibf2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fd7ul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y5h4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gcr2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oi60g")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0ukn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u4pv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4m2o5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oa65l")
+}],
+"loop": true,
+"name": &"Walk_1",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_nh4av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gsac6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_n8dan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nt2jy")
+}],
+"loop": true,
+"name": &"Walk_2",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxnqb"]
+radius = 15.0
+height = 44.0
+
+[node name="Mob" type="RigidBody2D" groups=["mobs"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_mf1vi")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.7, 2.4)
+sprite_frames = SubResource("SpriteFrames_gibf2")
+animation = &"Walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 5)
+shape = SubResource("CapsuleShape2D_bxnqb")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-100, -100, 200, 200)
